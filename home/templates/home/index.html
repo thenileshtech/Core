@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block start %}
+    <h1>This is Home Page</h1>
+
+    <a href="/contact/">Contact</a>
+    |
+    <a href="/about/">About</a>
+
+
+    <table class="container">
+        <tr>
+          {% for table_headings in table_headings %}
+          <th>{{table_headings}}</th>
+          {% endfor %}
+        </tr>
+
+      {% for peoples in peoples %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{peoples.name}}</td>
+          <td>{{peoples.age}}</td>
+          <td {% if peoples.age < 18 %} style="background:red" {% endif %} >
+            {% if peoples.age >= 18 %}
+                👍
+            {% else %}
+                👎
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </table>
+      <p>
+        {% if 'cucumber' in vegetables %}
+            Yes
+        {% elif 'Tomato' in vegetables %}
+            Yes
+        {% else %}
+            Not Available
+        {% endif %}
+      </p>
+</body>
+</html>
+
+{% endblock %}
